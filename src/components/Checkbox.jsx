@@ -1,6 +1,6 @@
 import { BsCheck } from 'react-icons/bs';
 
-const Checkbox = ({ isChecked, onChangeCallback, isDisabled = false }) => {
+const Checkbox = ({ isChecked, onChangeCallback, isDisabled }) => {
   return (
     <label>
       <span

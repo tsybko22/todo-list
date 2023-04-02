@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { useDispatch } from 'react-redux';
 import { removeTodo, updateTodo } from '../store/todos/todos-actions';
 
@@ -28,7 +29,7 @@ const TodoItem = ({ id, title, isCompleted }) => {
       }
 
       setIsEditMode(false);
-      alert('Title is the same.');
+      alert('Task is the same.');
     }
   };
 
@@ -46,12 +47,8 @@ const TodoItem = ({ id, title, isCompleted }) => {
             className="w-3/4 py-2 px-3 bg-gray-700 border border-gray-500 rounded text-gray-300 font-bold focus"
             title="Press Enter to rename"
             value={inputValue}
-            onChange={(evt) => {
-              setInputValue(evt.target.value);
-            }}
-            onKeyDown={(evt) => {
-              handleTodoRename(evt);
-            }}
+            onChange={(evt) => setInputValue(evt.target.value)}
+            onKeyDown={handleTodoRename}
             onBlur={() => {
               setIsEditMode(false);
               setInputValue(title);

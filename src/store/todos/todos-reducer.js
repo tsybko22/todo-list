@@ -14,9 +14,7 @@ const initialState = {
   error: null,
 };
 
-export const todosReducer = (state = initialState, action) => {
-  const { type, payload } = action;
-
+export const todosReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     default:
       return state;
@@ -74,3 +72,5 @@ export const todosReducer = (state = initialState, action) => {
       };
   }
 };
+
+export default todosReducer;

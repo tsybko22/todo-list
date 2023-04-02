@@ -6,29 +6,26 @@ import { BsXLg } from 'react-icons/bs';
 
 const NewTodoForm = () => {
   const dispatch = useDispatch();
-  const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState('');
   const inputRef = useRef(null);
+  const [inputValue, setInputValue] = useState('');
 
   const handleFormReset = () => {
-    setIsFocused(false);
     setInputValue('');
     inputRef.current.blur();
   };
 
   const handleInputChange = (evt) => {
     setInputValue(evt.target.value);
-
-    if (inputRef.current.value.length === 0) {
-      setIsFocused(false);
-      return;
-    }
-
-    setIsFocused(true);
   };
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
+
+    if (!inputValue.trim()) {
+      alert('Please enter a task');
+      return;
+    }
+
     dispatch(addTodo(inputValue));
     handleFormReset();
   };
@@ -36,9 +33,7 @@ const NewTodoForm = () => {
   return (
     <form
       className="flex gap-5"
-      onSubmit={(evt) => {
-        handleFormSubmit(evt);
-      }}
+      onSubmit={handleFormSubmit}
     >
       <div className="relative w-full">
         <input
@@ -48,11 +43,9 @@ const NewTodoForm = () => {
           name="title"
           ref={inputRef}
           value={inputValue}
-          onChange={(evt) => {
-            handleInputChange(evt);
-          }}
+          onChange={handleInputChange}
         />
-        {isFocused && (
+        {!!inputValue && (
           <button
             type="reset"
             aria-label="Reset"
