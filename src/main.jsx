@@ -6,8 +6,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-import App from './App';
-import NotFound from './components/NotFound';
+import App from './pages/App';
+import NotFound from './pages/NotFound';
 
 import './index.css';
 

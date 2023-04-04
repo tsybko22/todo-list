@@ -11,17 +11,16 @@ const TodoList = () => {
   const dispatch = useDispatch();
   const { filter } = useParams();
   const todos = useSelector((state) => selectVisibleTodos(state, filter));
-  const error = useSelector((state) => state.error);
-  const status = useSelector((state) => state.status);
+  const { error, status } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(loadTodos());
-  }, []);
+  }, [dispatch]);
 
   if (error || status === 'rejected') {
     return (
       <h1 className="mt-11 text-bold text-3xl text-gray-300 text-center">
-        {'Unexpected error'}
+        {error || 'Unexpected error'}
       </h1>
     );
   }

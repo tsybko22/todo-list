@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import Container from './components/Container';
-import FiltersNav from './components/FiltersNav';
-import NewTodoForm from './components/NewTodoForm';
-import TodoList from './components/TodoList';
+import Container from '../components/Container';
+import FiltersNav from '../components/FiltersNav';
+import NewTodoForm from '../components/NewTodoForm';
+import TodoList from '../components/TodoList';
 
 const validFilters = ['all', 'active', 'completed'];
 
