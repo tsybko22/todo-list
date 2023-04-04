@@ -36,7 +36,7 @@ export const updateTodo =
 
       dispatch({ type: UPDATE_TODO, payload: { ...todo } });
     } catch (err) {
-      dispatch(setError(err.message));
+      dispatch(setError(err));
     }
   };
 
@@ -52,7 +52,7 @@ export const addTodo =
 
       dispatch({ type: ADD_TODO, payload: { id: data.id, ...newTodo } });
     } catch (err) {
-      dispatch(setError(err.message));
+      dispatch(setError(err));
     }
   };
 
@@ -66,7 +66,7 @@ export const removeTodo =
 
       dispatch({ type: REMOVE_TODO, payload: { id } });
     } catch (err) {
-      dispatch(setError(err.message));
+      dispatch(setError(err));
     }
   };
 
@@ -87,6 +87,6 @@ export const clearCompletedTodos =
 
       dispatch({ type: CLEAR_COMPLETED_TODOS });
     } catch (err) {
-      dispatch(setError(err.message));
+      dispatch(setError(err));
     }
   };
