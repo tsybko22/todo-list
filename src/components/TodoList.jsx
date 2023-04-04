@@ -20,7 +20,7 @@ const TodoList = () => {
   if (error || status === 'rejected') {
     return (
       <h1 className="mt-11 text-bold text-3xl text-gray-300 text-center">
-        {error || 'Unexpected error'}
+        Unexpected error
       </h1>
     );
   }

@@ -44,7 +44,7 @@ export const todosReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         status: 'fulfilled',
-        todos: [...state.todos, payload],
+        todos: [payload, ...state.todos],
       };
 
     case REMOVE_TODO:
