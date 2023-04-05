@@ -5,7 +5,7 @@ import { removeTodo, updateTodo } from '../store/todos/todos-actions';
 
 import { BsTrashFill, BsXLg } from 'react-icons/bs';
 
-import UncontrolledCheckbox from './Checkbox';
+import CustomCheckbox from './CustomCheckbox';
 import CustomTextInput from './CustomTextInput';
 
 const TodoItem = ({ id, title, isCompleted }) => {
@@ -41,9 +41,10 @@ const TodoItem = ({ id, title, isCompleted }) => {
 
   return (
     <li className="flex items-center gap-3 px-3 py-2 bg-gray-600 rounded">
-      <UncontrolledCheckbox
+      <CustomCheckbox
         isChecked={isCompleted}
         onChangeCallback={handleTodoToggle}
+        isDisabled={isEditMode}
       />
       {isEditMode ? (
         <>
@@ -51,7 +52,6 @@ const TodoItem = ({ id, title, isCompleted }) => {
             value={value}
             setValue={setValue}
             onKeyDown={handleTodoRename}
-            onBlur={handleInputReset}
             name="rename-title"
             title="Press Enter to rename"
             placeholder="Add a task"
@@ -81,8 +81,9 @@ const TodoItem = ({ id, title, isCompleted }) => {
       )}
       <button
         aria-label="Delete task"
-        className="ml-auto text-rose-400 active:text-rose-500 focus"
+        className="ml-auto text-rose-400 active:text-rose-500 focus disabled:opacity-50"
         onClick={handleTodoDelete}
+        disabled={isEditMode}
       >
         <BsTrashFill />
       </button>

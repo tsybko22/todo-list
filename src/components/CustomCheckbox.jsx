@@ -1,12 +1,13 @@
 import { BsCheck } from 'react-icons/bs';
 
-const Checkbox = ({ isChecked, onChangeCallback, isDisabled }) => {
+const CustomCheckbox = ({ isChecked, onChangeCallback, isDisabled }) => {
   return (
     <label>
       <span
-        className={`block border-2 border-emerald-400 text-white rounded-sm w-5 h-5 cursor-pointer ${
-          isChecked ? 'bg-emerald-400' : ''
-        }`}
+        className={`block border-2 border-emerald-400 text-white rounded-sm w-5 h-5 cursor-pointe
+        ${isChecked && 'bg-emerald-400'}
+        ${isDisabled && 'opacity-50'}
+        `}
       >
         {isChecked && <BsCheck />}
       </span>
@@ -22,4 +23,4 @@ const Checkbox = ({ isChecked, onChangeCallback, isDisabled }) => {
   );
 };
 
-export default Checkbox;
+export default CustomCheckbox;
