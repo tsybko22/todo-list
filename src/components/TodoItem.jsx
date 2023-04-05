@@ -52,6 +52,7 @@ const TodoItem = ({ id, title, isCompleted }) => {
             value={value}
             setValue={setValue}
             onKeyDown={handleTodoRename}
+            onBlur={handleInputReset}
             name="rename-title"
             title="Press Enter to rename"
             placeholder="Add a task"
