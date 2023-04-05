@@ -5,6 +5,7 @@ import { removeTodo, updateTodo } from '../store/todos/todos-actions';
 
 import { BsTrashFill, BsXLg } from 'react-icons/bs';
 
+import useTimeoutFn from '../hooks/useTimeoutFn';
 import CustomCheckbox from './CustomCheckbox';
 import CustomTextInput from './CustomTextInput';
 
@@ -17,6 +18,9 @@ const TodoItem = ({ id, title, isCompleted }) => {
     setIsEditMode(false);
     setValue(title);
   };
+
+  //to lock checkbox and delete button when input is in edit mode
+  const handleInputResetTimeout = useTimeoutFn(handleInputReset, 100);
 
   const handleTodoDelete = () => {
     dispatch(removeTodo(id));
@@ -52,7 +56,7 @@ const TodoItem = ({ id, title, isCompleted }) => {
             value={value}
             setValue={setValue}
             onKeyDown={handleTodoRename}
-            onBlur={handleInputReset}
+            onBlur={handleInputResetTimeout}
             name="rename-title"
             title="Press Enter to rename"
             placeholder="Add a task"
