@@ -30,6 +30,7 @@ To filter tasks by their completion status, click on one of the three buttons at
 
 This app was built using the following technologies:
 
+- Firebase
 - React
 - React Redux
 - [React Router](https://github.com/remix-run/react-router)
