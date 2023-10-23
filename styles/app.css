@@ -31,15 +31,17 @@ h6 {
 }
 
 :root {
-  --bg-main: #ffffff;
-  --bg-accent-focus: #1070ff;
-  --bg-accent: #f3f8ff;
-  --bg-primary: #c5c5c5;
-  --bg-secondary: #f2f3f4;
+  --main-light: #ffffff;
+  --primary-light: #eeeeee;
+  --accent-light: #cccccc;
+  --secondary-light: #dddddd;
 
-  --text-color: #2e2e2e;
-  --text-color-secondary: #9eb7de;
+  --primary-dark: #333333;
+  --secondary-dark: #444444;
+
   --font-family: 'Poppins', sans-serif;
+
+  --transition-colors: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -48,6 +50,105 @@ body {
   font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--bg-main);
-  color: var(--text-color);
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  background-color: var(--secondary-dark);
+  color: var(--primary-light);
+  border: none;
+  border-radius: 0.5rem;
+  transition: var(--transition-colors);
+  cursor: pointer;
+}
+.btn:active {
+  background-color: var(--primary-dark);
+}
+
+.todo {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.todo__sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 100vh;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  background-color: var(--secondary-light);
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0;
+  list-style-type: none;
+}
+
+.projects__btn {
+  padding: 0.2rem 0.4rem;
+  width: 100%;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+  border: none;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  transition: var(--transition-colors);
+  cursor: pointer;
+}
+.projects__btn:hover {
+  background-color: var(--primary-light);
+}
+.projects__btn--active {
+  background-color: var(--accent-light);
+  cursor: default;
+}
+.projects__btn--active:hover {
+  background-color: var(--accent-light);
+}
+
+.todo__content {
+  padding: 1rem 2rem;
+}
+
+.project-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--primary-dark);
+}
+
+.todo__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 35rem;
+  margin-bottom: 2.5rem;
+}
+
+.todo-form__input {
+  width: 100%;
+  max-width: 32rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--main-light);
+  color: var(--secondary-dark);
+  border: none;
+  border-radius: 0.5rem;
+}
+.todo-form__input::placeholder {
+  color: var(--accent-light);
 }
