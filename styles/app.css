@@ -32,11 +32,13 @@ h6 {
 
 :root {
   --bg-main: #ffffff;
-  --bg-accent: #1070ff;
+  --bg-accent-focus: #1070ff;
+  --bg-accent: #f3f8ff;
   --bg-primary: #c5c5c5;
   --bg-secondary: #f2f3f4;
 
   --text-color: #2e2e2e;
+  --text-color-secondary: #9eb7de;
   --font-family: 'Poppins', sans-serif;
 }
 

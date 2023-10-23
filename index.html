@@ -16,5 +16,38 @@
       src="./scripts/app.js"
     ></script>
   </head>
-  <body></body>
+  <body>
+    <div class="todo">
+      <div class="todo__sidebar">
+        <ul class="projects">
+          <li class="projects__item">
+            <button class="projects__btn">Inbox</button>
+          </li>
+        </ul>
+      </div>
+      <div class="todo__content">
+        <h1 class="todo-title">Inbox</h1>
+        <form
+          class="todo-form"
+          autocomplete="off"
+        >
+          <input
+            type="text"
+            placeholder="Type here"
+            name="todo-text"
+            class="todo-form__input"
+          />
+          <button
+            class="todo-form__btn"
+            type="submit"
+          >
+            Add
+          </button>
+        </form>
+        <ul class="todo-list">
+          <li class="todo-list__item">Todo: Checkbox Text Edit Delete</li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
