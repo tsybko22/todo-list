@@ -50,7 +50,20 @@
             </button>
           </form>
           <ul class="todo-list">
-            <li class="todo-list__item">Todo: Checkbox Text Edit Delete</li>
+            <li class="todo-list__item todo-item">
+              <div class="todo-item__wrapper">
+                <label class="todo-item__label">
+                  <input
+                    type="checkbox"
+                    name="task"
+                    class="todo-item__checkbox"
+                  />
+                  <span class="todo-item__box"></span>
+                </label>
+                <span class="todo-item__text">Task #1</span>
+              </div>
+              <button class="todo-item__btn-delete">X</button>
+            </li>
           </ul>
         </div>
       </div>
