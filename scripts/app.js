@@ -8,7 +8,7 @@ const todoList = (function () {
   const createTask = ({ id, title, isCompleted }) => {
     const todoItem = document.createElement('li');
     todoItem.classList.add('todo-list__item', 'todo-item');
-    todoItem.setAttribute('id', id);
+    todoItem.dataset.id = id;
 
     todoItemMarkup = `
       <div class="todo-item__wrapper">
@@ -31,7 +31,12 @@ const todoList = (function () {
     todoListEl.appendChild(todoItem);
   };
 
-  return { createTask };
+  const deleteTask = (taskId) => {
+    tasks = tasks.filter((task) => task.id == taskId);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  };
+
+  return { createTask, deleteTask };
 })();
 
 if (localStorage.getItem('tasks')) {
@@ -62,4 +67,14 @@ todoFormEl.addEventListener('submit', (evt) => {
 
   todoFormEl.reset();
   todoInputEl.focus();
+});
+
+todoListEl.addEventListener('click', (evt) => {
+  if (evt.target.className === 'todo-item__btn-delete') {
+    const todoItem = evt.target.closest('.todo-item');
+    const taskId = todoItem.dataset.id;
+
+    todoList.deleteTask(parseInt(taskId));
+    todoItem.remove();
+  }
 });
