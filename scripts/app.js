@@ -21,7 +21,11 @@ const todoList = (function () {
           />
           <span class="todo-item__box"></span>
         </label>
-        <span class="todo-item__text">${title}</span>
+        <span class="todo-item__text ${
+          isCompleted ? 'todo-item__text--line-through ' : ''
+        }"
+          ${!isCompleted ? 'contenteditable' : ''}
+        >${title}</span>
       </div>
       <button class="todo-item__btn-delete">X</button>
     `;
@@ -31,12 +35,38 @@ const todoList = (function () {
     todoListEl.appendChild(todoItem);
   };
 
-  const deleteTask = (taskId) => {
-    tasks = tasks.filter((task) => task.id == taskId);
+  const deleteTask = (taskId, todoItem) => {
+    tasks = tasks.filter((task) => task.id !== taskId);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    todoItem.remove();
+  };
+
+  const updateTask = (taskId, targetEl) => {
+    let currentTask = tasks.find((task) => task.id === taskId);
+
+    if (targetEl.hasAttribute('contenteditable')) {
+      currentTask.title = targetEl.textContent;
+    }
+
+    if (targetEl.classList.contains('todo-item__checkbox')) {
+      const todoTextEl = targetEl.closest('.todo-item').querySelector('.todo-item__text');
+
+      currentTask.isCompleted = !currentTask.isCompleted;
+
+      if (currentTask.isCompleted) {
+        todoTextEl.classList.add('todo-item__text--line-through');
+        todoTextEl.removeAttribute('contenteditable');
+      } else {
+        todoTextEl.classList.remove('todo-item__text--line-through');
+        todoTextEl.setAttribute('contenteditable');
+      }
+    }
+
     localStorage.setItem('tasks', JSON.stringify(tasks));
   };
 
-  return { createTask, deleteTask };
+  return { createTask, deleteTask, updateTask };
 })();
 
 if (localStorage.getItem('tasks')) {
@@ -54,27 +84,32 @@ todoFormEl.addEventListener('submit', (evt) => {
     return;
   }
 
-  const task = {
+  const newTask = {
     id: new Date().getTime(),
     title: inputValue,
     isCompleted: false,
   };
 
-  tasks.push(task);
+  tasks.push(newTask);
   localStorage.setItem('tasks', JSON.stringify(tasks));
 
-  todoList.createTask(task);
+  todoList.createTask(newTask);
 
   todoFormEl.reset();
   todoInputEl.focus();
 });
 
 todoListEl.addEventListener('click', (evt) => {
-  if (evt.target.className === 'todo-item__btn-delete') {
+  if (evt.target.classList.contains('todo-item__btn-delete')) {
     const todoItem = evt.target.closest('.todo-item');
-    const taskId = todoItem.dataset.id;
+    const taskId = parseInt(todoItem.dataset.id);
 
-    todoList.deleteTask(parseInt(taskId));
-    todoItem.remove();
+    todoList.deleteTask(taskId, todoItem);
   }
+});
+
+todoListEl.addEventListener('input', (evt) => {
+  const taskId = parseInt(evt.target.closest('.todo-item').dataset.id);
+
+  todoList.updateTask(taskId, evt.target);
 });
