@@ -18,39 +18,25 @@
   </head>
   <body>
     <div class="todo">
-      <div class="todo__sidebar">
-        <ul class="projects">
-          <li class="projects__item projects__item--active">
-            <button class="projects__btn projects__btn--active">Inbox</button>
-          </li>
-          <li class="projects__item projects__item--active">
-            <button class="projects__btn">Inbox</button>
-          </li>
-        </ul>
-        <button class="project-add__btn btn">Add Project</button>
-      </div>
-      <div class="todo__content">
-        <h1 class="title">Inbox</h1>
-        <div class="todo__wrapper">
-          <form
-            class="todo-form"
-            autocomplete="off"
+      <div class="todo__wrapper">
+        <form
+          class="todo-form"
+          autocomplete="off"
+        >
+          <input
+            type="text"
+            placeholder="Type here"
+            name="todo-title"
+            class="todo-form__input"
+          />
+          <button
+            class="todo-form__btn btn"
+            type="submit"
           >
-            <input
-              type="text"
-              placeholder="Type here"
-              name="todo-title"
-              class="todo-form__input"
-            />
-            <button
-              class="todo-form__btn btn"
-              type="submit"
-            >
-              Add
-            </button>
-          </form>
-          <ul class="todo-list"></ul>
-        </div>
+            Add
+          </button>
+        </form>
+        <ul class="todo-list"></ul>
       </div>
     </div>
   </body>

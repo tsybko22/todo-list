@@ -70,61 +70,11 @@ body {
 }
 
 .todo {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-}
-
-.todo__sidebar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
-  min-height: 100vh;
-  padding: 1rem 1.5rem;
-  text-align: center;
-  background-color: var(--secondary-light);
-}
-
-.projects {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  padding: 0;
-  list-style-type: none;
-}
-
-.projects__btn {
-  padding: 0.2rem 0.4rem;
   width: 100%;
-  font-weight: 500;
-  font-size: 1.2rem;
-  color: var(--primary-dark);
-  border: none;
-  border-radius: 0.5rem;
-  background-color: transparent;
-  transition: var(--transition);
-  cursor: pointer;
-}
-.projects__btn:hover {
-  background-color: var(--primary-light);
-}
-.projects__btn--active {
-  background-color: var(--accent-light);
-  cursor: default;
-}
-.projects__btn--active:hover {
-  background-color: var(--accent-light);
-}
-
-.todo__content {
+  max-width: 70rem;
+  margin: 0 auto;
+  margin-top: 2rem;
   padding: 1rem 2rem;
-}
-
-.title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  color: var(--primary-dark);
 }
 
 .todo__wrapper {

@@ -59,7 +59,7 @@ const todoList = (function () {
         todoTextEl.removeAttribute('contenteditable');
       } else {
         todoTextEl.classList.remove('todo-item__text--line-through');
-        todoTextEl.setAttribute('contenteditable');
+        todoTextEl.setAttribute('contenteditable', true);
       }
     }
 
